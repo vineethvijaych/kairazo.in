@@ -1,11 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "24/7", label: "Support" },
-];
+
 
 const Hero = ({ onOpenEstimator }) => {
   const scrollToWork = () => {
