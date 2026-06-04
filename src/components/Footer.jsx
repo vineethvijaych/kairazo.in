@@ -23,31 +23,50 @@ const Footer = () => {
       </div>
 
       <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <div className="grid gap-12 lg:grid-cols-4">
+        {/* Main Footer */}
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-xl font-black">
+              <div className="flex items-center gap-3">
+                <div
+                  className="
+                    h-12
+                    w-12
+                    sm:h-14
+                    sm:w-14
+                    rounded-2xl
+                    bg-gradient-to-br
+                    from-indigo-600
+                    to-purple-600
+                    flex
+                    items-center
+                    justify-center
+                    text-lg
+                    sm:text-xl
+                    font-black
+                  "
+                >
                   K
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-black tracking-wider">
+                  <h2 className="text-xl sm:text-2xl font-black tracking-wider">
                     KAIROZA
                   </h2>
+
                   <p className="text-sm text-slate-500">
                     Digital Growth Studio
                   </p>
                 </div>
               </div>
 
-              <p className="mt-6 text-slate-400 leading-relaxed">
+              <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
                 Building premium websites, web applications and digital
                 systems that help businesses grow online.
               </p>
 
-              <div className="mt-6 space-y-3 text-slate-400">
+              <div className="mt-5 space-y-2 text-sm text-slate-400">
                 <div>📧 hello@kairoza.com</div>
                 <div>📞 +91 XXXXX XXXXX</div>
                 <div>📍 Kerala, India</div>
@@ -56,11 +75,11 @@ const Footer = () => {
 
             {/* Navigation */}
             <div>
-              <h3 className="font-bold text-lg mb-6">
+              <h3 className="font-bold text-lg mb-5">
                 Navigation
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {[
                   "services",
                   "work",
@@ -70,7 +89,12 @@ const Footer = () => {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className="block text-slate-400 hover:text-indigo-400 transition"
+                    className="
+                      block
+                      text-slate-400
+                      hover:text-indigo-400
+                      transition
+                    "
                   >
                     {item.charAt(0).toUpperCase() +
                       item.slice(1)}
@@ -81,11 +105,11 @@ const Footer = () => {
 
             {/* Services */}
             <div>
-              <h3 className="font-bold text-lg mb-6">
+              <h3 className="font-bold text-lg mb-5">
                 Services
               </h3>
 
-              <div className="space-y-4 text-slate-400">
+              <div className="space-y-3 text-slate-400">
                 <div>Web Development</div>
                 <div>Web Applications</div>
                 <div>UI/UX Design</div>
@@ -96,7 +120,7 @@ const Footer = () => {
 
             {/* CTA */}
             <div>
-              <h3 className="font-bold text-lg mb-6">
+              <h3 className="font-bold text-lg mb-5">
                 Let's Build
               </h3>
 
@@ -104,8 +128,24 @@ const Footer = () => {
                 Ready to transform your business with a premium
                 digital presence?
               </p>
-
-              <button
+ <button
+              onClick={scrollToTop}
+              className="
+                h-10
+                w-10
+                sm:h-12
+                sm:w-12
+                rounded-2xl
+                bg-white/5
+                border
+                border-white/10
+                hover:border-indigo-500
+                transition
+              "
+            >
+              ↑
+            </button>
+              {/* <button
                 className="
                   mt-6
                   rounded-2xl
@@ -121,17 +161,19 @@ const Footer = () => {
                 "
               >
                 Start Project →
-              </button>
+              </button> */}
 
               {/* Social Links */}
-              <div className="flex gap-4 mt-8">
+              {/* <div className="flex flex-wrap gap-3 mt-6">
                 <a
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
                   className="
-                    h-12
-                    w-12
+                    h-10
+                    w-10
+                    sm:h-12
+                    sm:w-12
                     rounded-2xl
                     bg-white/5
                     border
@@ -151,8 +193,10 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="
-                    h-12
-                    w-12
+                    h-10
+                    w-10
+                    sm:h-12
+                    sm:w-12
                     rounded-2xl
                     bg-white/5
                     border
@@ -166,19 +210,44 @@ const Footer = () => {
                 >
                   📷
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div
+            className="
+              max-w-7xl
+              mx-auto
+              px-5
+              sm:px-6
+              py-6
+              flex
+              flex-col
+              items-center
+              text-center
+              gap-5
+              md:flex-row
+              md:justify-between
+              md:text-left
+            "
+          >
             <p className="text-sm text-slate-500">
               © 2026 KAIROZA. All rights reserved.
             </p>
 
-            <div className="flex gap-6 text-sm text-slate-500">
+            <div
+              className="
+                flex
+                flex-wrap
+                justify-center
+                gap-4
+                text-sm
+                text-slate-500
+              "
+            >
               <button className="hover:text-white">
                 Privacy Policy
               </button>
@@ -188,11 +257,13 @@ const Footer = () => {
               </button>
             </div>
 
-            <button
+            {/* <button
               onClick={scrollToTop}
               className="
-                h-12
-                w-12
+                h-10
+                w-10
+                sm:h-12
+                sm:w-12
                 rounded-2xl
                 bg-white/5
                 border
@@ -202,7 +273,7 @@ const Footer = () => {
               "
             >
               ↑
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

@@ -8,7 +8,9 @@ const projects = [
     description:
       "Transformed an Instagram-based jewelry business into a premium online store focused on conversions, trust and scalable growth.",
     url: "https://anjisjewel.com",
-    icon: "💎",
+      
+       image: "/projects/WhatsApp Image 2026-06-04 at 3.57.03 PM.jpeg",
+
     gradient:
       "from-indigo-500 via-purple-500 to-pink-500",
     stats: [
@@ -18,13 +20,12 @@ const projects = [
     ],
   },
   {
-    title: "KLR Rentals",
+    title: "KL Rentals",
     category: "Rental Marketplace",
     description:
       "Built a lead-generation platform optimized for local search visibility, inquiries and long-term organic growth.",
     url: "https://klrentals.in",
-    icon: "🏢",
-    gradient:
+ image: "/projects/WhatsApp Image 2026-06-04 at 3.57.03 PM (1).jpeg",    gradient:
       "from-cyan-500 via-indigo-500 to-blue-600",
     stats: [
       "SEO Optimized",
@@ -34,7 +35,7 @@ const projects = [
   },
 ];
 
-const Work = () => {
+const Work = ({ onOpenEstimator }) => {
   return (
     <section
       id="work"
@@ -68,7 +69,7 @@ const Work = () => {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        {/* <div className="mt-16 grid gap-6 md:grid-cols-3">
           {[
             {
               value: "150+",
@@ -96,7 +97,7 @@ const Work = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Projects */}
         <div className="mt-24 space-y-10">
@@ -136,7 +137,7 @@ const Work = () => {
                 <div
                   className={`
                     relative
-                    min-h-[400px]
+                    min-h-[500px]
                     overflow-hidden
                     bg-gradient-to-br
                     ${project.gradient}
@@ -145,19 +146,32 @@ const Work = () => {
                   {/* Glow */}
                   <div className="absolute inset-0 bg-black/10" />
 
-                  <motion.div
-                    whileHover={{
-                      scale: 1.08,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                    }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <div className="text-[120px] drop-shadow-2xl">
-                      {project.icon}
-                    </div>
-                  </motion.div>
+                <motion.div
+  whileHover={{
+    scale: 1.05,
+  }}
+  transition={{
+    duration: 0.5,
+  }}
+  className="absolute inset-0 p-8"
+>
+  <img
+  src={project.image}
+  alt={project.title}
+  className="
+    h-full
+    w-full
+    rounded-3xl
+    object-cover
+    shadow-[0_25px_80px_rgba(0,0,0,0.25)]
+    border
+    border-white/20
+    transition-transform
+    duration-700
+    group-hover:scale-[1.03]
+  "
+/>
+</motion.div>
 
                   {/* Floating Card */}
                   <div className="absolute left-8 top-8 rounded-2xl bg-white/15 px-4 py-2 text-sm font-semibold text-white backdrop-blur-xl">
@@ -202,7 +216,7 @@ const Work = () => {
                   </div>
 
                   {/* Result Cards */}
-                  <div className="mt-10 grid grid-cols-3 gap-4">
+                  {/* <div className="mt-10 grid grid-cols-3 gap-4">
                     <div className="rounded-2xl bg-slate-50 p-4">
                       <div className="text-2xl font-black text-slate-900">
                         +120%
@@ -232,7 +246,7 @@ const Work = () => {
                         Rating
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* CTA */}
                   <div className="mt-10">
@@ -280,23 +294,24 @@ const Work = () => {
             </p>
 
             <button
-              className="
-                mt-8
-                rounded-2xl
-                bg-gradient-to-r
-                from-indigo-600
-                to-purple-600
-                px-8
-                py-4
-                font-semibold
-                text-white
-                shadow-[0_20px_50px_rgba(79,70,229,0.3)]
-                transition
-                hover:scale-105
-              "
-            >
-              Start Your Project
-            </button>
+  onClick={onOpenEstimator}
+  className="
+    mt-8
+    rounded-2xl
+    bg-gradient-to-r
+    from-indigo-600
+    to-purple-600
+    px-8
+    py-4
+    font-semibold
+    text-white
+    shadow-[0_20px_50px_rgba(79,70,229,0.3)]
+    transition
+    hover:scale-105
+  "
+>
+  Create your Project
+</button>
           </div>
         </div>
       </div>

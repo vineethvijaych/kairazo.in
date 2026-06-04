@@ -23,15 +23,15 @@ export const TESTIMONIALS = [
     text: "Kairoza transformed our Instagram business into a professional online store. The website looks premium and helped us gain customer trust immediately.",
   },
   {
-    author: "KLR Rentals",
+    author: "KL Rentals",
     text: "Professional, fast and highly responsive. The platform generated quality inquiries from day one and improved our online visibility.",
   },
   
 ];
 
 export const PRICING_PLANS = [
-  { name: 'Essential', price: '9,999', description: 'starting range', popular: false, features: ['3-5 page website', 'Mobile responsive', 'Basic SEO', '30 days support'] },
-  { name: 'KAIROZA Pro', price: '24,999', description: 'best value', popular: true, features: ['10-12 page website', 'CMS + Animations', 'Advanced SEO', '3 months support'] },
+  { name: 'Essential', price: '10,999', description: 'starting range', popular: false, features: ['3-5 page website', 'Mobile responsive', 'Basic SEO', '30 days support'] },
+  { name: 'KAIROZA Pro', price: '19,999', description: 'best value', popular: true, features: ['10-12 page website', 'CMS + Animations', 'Advanced SEO', '3 months support'] },
   { name: 'Enterprise', price: 'Custom', description: 'tailored for scale', popular: false, features: ['Custom web application', 'API & database', 'Dedicated support', 'Unlimited scaling'] }
 ];
 

@@ -64,7 +64,6 @@ const Navbar = ({ onOpenEstimator }) => {
             }
           `}
         >
-          {/* Glow Effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-cyan-500/5" />
 
           <div className="relative flex h-20 items-center justify-between px-6">
@@ -82,9 +81,9 @@ const Navbar = ({ onOpenEstimator }) => {
               <div className="relative">
                 <div className="absolute inset-0 rounded-xl bg-indigo-500 blur-md opacity-40" />
 
-                <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-lg font-black text-white shadow-lg">
+                {/* <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-lg font-black text-white shadow-lg">
                   K
-                </div>
+                </div> */}
               </div>
 
               <div>
@@ -118,12 +117,8 @@ const Navbar = ({ onOpenEstimator }) => {
             {/* Desktop CTA */}
             <div className="hidden md:block">
               <motion.button
-                whileHover={{
-                  scale: 1.04,
-                }}
-                whileTap={{
-                  scale: 0.98,
-                }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={onOpenEstimator}
                 className="
                   group
@@ -142,7 +137,7 @@ const Navbar = ({ onOpenEstimator }) => {
                 "
               >
                 <span className="relative z-10">
-                  Know Your Project
+                  Create your Project
                 </span>
 
                 <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-1000 group-hover:translate-x-full" />
@@ -150,35 +145,80 @@ const Navbar = ({ onOpenEstimator }) => {
             </div>
 
             {/* Mobile Button */}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() =>
                 setIsMobileMenuOpen(!isMobileMenuOpen)
               }
-              className="relative flex h-10 w-10 items-center justify-center md:hidden"
+              className="
+                relative
+                flex
+                h-12
+                w-12
+                items-center
+                justify-center
+                rounded-2xl
+                
+                border-white/30
+                
+                backdrop-blur-xl
+                
+                md:hidden
+              "
             >
               <motion.span
                 animate={{
                   rotate: isMobileMenuOpen ? 45 : 0,
-                  y: isMobileMenuOpen ? 0 : -6,
+                  y: isMobileMenuOpen ? 0 : -7,
                 }}
-                className="absolute h-0.5 w-6 bg-slate-800"
+                transition={{
+                  duration: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  absolute
+                  h-[2px]
+                  w-6
+                  rounded-full
+                  bg-slate-800
+                "
               />
 
               <motion.span
                 animate={{
                   opacity: isMobileMenuOpen ? 0 : 1,
+                  scaleX: isMobileMenuOpen ? 0 : 1,
                 }}
-                className="absolute h-0.5 w-6 bg-slate-800"
+                transition={{
+                  duration: 0.3,
+                }}
+                className="
+                  absolute
+                  h-[2px]
+                  w-6
+                  rounded-full
+                  bg-slate-800
+                "
               />
 
               <motion.span
                 animate={{
                   rotate: isMobileMenuOpen ? -45 : 0,
-                  y: isMobileMenuOpen ? 0 : 6,
+                  y: isMobileMenuOpen ? 0 : 7,
                 }}
-                className="absolute h-0.5 w-6 bg-slate-800"
+                transition={{
+                  duration: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  absolute
+                  h-[2px]
+                  w-6
+                  rounded-full
+                  bg-slate-800
+                "
               />
-            </button>
+            </motion.button>
           </div>
         </motion.div>
 
@@ -188,18 +228,25 @@ const Navbar = ({ onOpenEstimator }) => {
             <motion.div
               initial={{
                 opacity: 0,
-                y: -20,
+                scale: 0.96,
+                y: -10,
+                filter: "blur(12px)",
               }}
               animate={{
                 opacity: 1,
+                scale: 1,
                 y: 0,
+                filter: "blur(0px)",
               }}
               exit={{
                 opacity: 0,
-                y: -20,
+                scale: 0.96,
+                y: -10,
+                filter: "blur(12px)",
               }}
               transition={{
-                duration: 0.25,
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 mt-3
@@ -207,30 +254,49 @@ const Navbar = ({ onOpenEstimator }) => {
                 rounded-3xl
                 border
                 border-white/30
-                bg-white/85
-                backdrop-blur-2xl
-                shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                bg-white/55
+                backdrop-blur-[30px]
+                shadow-[0_30px_80px_rgba(0,0,0,0.12)]
                 md:hidden
               "
             >
-              <div className="p-6">
-                <div className="flex flex-col gap-2">
-                  {navLinks.map((link) => (
+              <div className="relative p-6">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute -top-20 -left-20 h-40 w-40 rounded-full bg-indigo-500/20 blur-3xl" />
+                  <div className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-cyan-500/20 blur-3xl" />
+                </div>
+
+                <div className="relative flex flex-col gap-2">
+                  {navLinks.map((link, index) => (
                     <motion.a
                       key={link.name}
-                      whileTap={{ scale: 0.98 }}
+                      initial={{
+                        opacity: 0,
+                        x: -20,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                      }}
+                      transition={{
+                        delay: index * 0.08,
+                      }}
+                      whileTap={{
+                        scale: 0.97,
+                      }}
                       href={link.href}
                       onClick={(e) =>
                         handleLinkClick(e, link.href)
                       }
                       className="
-                        rounded-xl
+                        rounded-2xl
                         px-4
-                        py-3
+                        py-4
                         font-medium
                         text-slate-700
-                        transition
-                        hover:bg-indigo-50
+                        transition-all
+                        duration-300
+                        hover:bg-white/50
                         hover:text-indigo-600
                       "
                     >
@@ -239,23 +305,36 @@ const Navbar = ({ onOpenEstimator }) => {
                   ))}
                 </div>
 
-                <button
+                <motion.button
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.3,
+                  }}
                   onClick={onOpenEstimator}
                   className="
                     mt-5
                     w-full
-                    rounded-xl
+                    rounded-2xl
                     bg-gradient-to-r
                     from-indigo-600
-                    to-purple-600
+                    via-purple-600
+                    to-indigo-600
                     px-5
-                    py-3
+                    py-4
                     font-semibold
                     text-white
+                    shadow-[0_15px_40px_rgba(79,70,229,0.35)]
                   "
                 >
-                  Know Your Project
-                </button>
+                  Create your Project
+                </motion.button>
               </div>
             </motion.div>
           )}

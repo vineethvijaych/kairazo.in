@@ -62,3 +62,47 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #6366f1;
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.animated-gradient-text {
+  background-image: linear-gradient(
+    120deg,
+    #4f46e5,
+    #7c3aed,
+    #06b6d4,
+    #4f46e5,
+    #7c3aed
+  );
+
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 100% 50%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  75% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

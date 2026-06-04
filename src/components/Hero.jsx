@@ -69,9 +69,34 @@ const Hero = ({ onOpenEstimator }) => {
               className="mt-8 text-5xl font-black leading-tight text-slate-900 md:text-7xl"
             >
               Digital Products
-              <span className="block bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                Built For Growth
-              </span>
+              <span className="relative block">
+  <span
+    className="
+      animated-gradient-text
+      bg-[length:300%_300%]
+      bg-clip-text
+      text-transparent
+    "
+  >
+    Built For Growth
+  </span>
+
+  <span
+    className="
+      absolute
+      inset-0
+      animated-gradient-text
+      bg-[length:300%_300%]
+      bg-clip-text
+      text-transparent
+      blur-xl
+      opacity-30
+      pointer-events-none
+    "
+  >
+    Built For Growth
+  </span>
+</span>
             </motion.h1>
 
             <motion.p
@@ -103,7 +128,7 @@ const Hero = ({ onOpenEstimator }) => {
                 className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 font-semibold text-white shadow-[0_20px_50px_rgba(79,70,229,0.35)] transition-all duration-300 hover:scale-105"
               >
                 <span className="relative z-10">
-                  Know Your Project Cost
+                  Create your Project 
                 </span>
 
                 <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-1000 group-hover:translate-x-full" />
@@ -118,7 +143,7 @@ const Hero = ({ onOpenEstimator }) => {
             </motion.div>
 
             {/* Stats */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
@@ -137,7 +162,7 @@ const Hero = ({ onOpenEstimator }) => {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </motion.div> */}
 
             {/* Social Proof */}
             <div className="mt-12">

@@ -25,7 +25,7 @@ const cardVariants = {
   },
 };
 
-const Services = () => {
+const Services = ({ onOpenEstimator }) => {
   return (
     <section
       id="services"
@@ -72,7 +72,7 @@ const Services = () => {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        {/* <div className="mt-16 grid gap-6 md:grid-cols-3">
           {[
             {
               value: "150+",
@@ -100,7 +100,7 @@ const Services = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Service Cards */}
         <motion.div
@@ -126,7 +126,7 @@ const Services = () => {
               <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500" />
 
               {/* Number */}
-              <div className="mb-8 flex items-center justify-between">
+              {/* <div className="mb-8 flex items-center justify-between">
                 <div className="text-5xl">
                   {service.icon}
                 </div>
@@ -134,7 +134,7 @@ const Services = () => {
                 <span className="text-sm font-bold text-slate-500">
                   0{index + 1}
                 </span>
-              </div>
+              </div> */}
 
               {/* Title */}
               <h3 className="text-2xl font-bold text-white transition-colors group-hover:text-indigo-300">
@@ -147,7 +147,7 @@ const Services = () => {
               </p>
 
               {/* Features */}
-              <div className="mt-6 space-y-3">
+              {/* <div className="mt-6 space-y-3">
                 <div className="flex items-center gap-2 text-sm text-slate-300">
                   <span className="h-2 w-2 rounded-full bg-indigo-500" />
                   Premium Quality
@@ -162,12 +162,12 @@ const Services = () => {
                   <span className="h-2 w-2 rounded-full bg-purple-500" />
                   Growth Focused
                 </div>
-              </div>
+              </div> */}
 
               {/* CTA */}
-              <div className="mt-8 flex items-center text-sm font-semibold text-indigo-400 transition-transform duration-300 group-hover:translate-x-2">
+              {/* <div className="mt-8 flex items-center text-sm font-semibold text-indigo-400 transition-transform duration-300 group-hover:translate-x-2">
                 Learn More →
-              </div>
+              </div> */}
 
               {/* Hover Glow */}
               <div className="absolute -bottom-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-indigo-500/20 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -188,23 +188,24 @@ const Services = () => {
             </p>
 
             <button
-              className="
-                mt-6
-                rounded-2xl
-                bg-gradient-to-r
-                from-indigo-600
-                to-purple-600
-                px-8
-                py-4
-                font-semibold
-                text-white
-                shadow-[0_20px_50px_rgba(79,70,229,0.3)]
-                transition
-                hover:scale-105
-              "
-            >
-              Book Free Consultation
-            </button>
+  onClick={onOpenEstimator}
+  className="
+    mt-6
+    rounded-2xl
+    bg-gradient-to-r
+    from-indigo-600
+    to-purple-600
+    px-8
+    py-4
+    font-semibold
+    text-white
+    shadow-[0_20px_50px_rgba(79,70,229,0.3)]
+    transition
+    hover:scale-105
+  "
+>
+  Book Free Consultation
+</button>
           </div>
         </div>
       </div>

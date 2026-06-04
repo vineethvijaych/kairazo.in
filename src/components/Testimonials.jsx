@@ -46,7 +46,7 @@ const Testimonials = () => {
         </div>
 
         {/* Trust Stats */}
-        <div className="mt-16 grid gap-6 md:grid-cols-4">
+        {/* <div className="mt-16 grid gap-6 md:grid-cols-4">
           {[
             {
               value: "150+",
@@ -78,7 +78,7 @@ const Testimonials = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Testimonials Grid */}
         <div className="mt-20 grid gap-8 lg:grid-cols-3">
@@ -165,10 +165,10 @@ const Testimonials = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-24 text-center">
+        {/* <div className="mt-24 text-center">
           <div className="rounded-[40px] border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-12 backdrop-blur-xl">
-            <h3 className="text-4xl font-black">
-              Ready To Become Our Next Success Story?
+            <h3 className="text-4xl font-black"> */}
+              {/* Ready To Become Our Next Success Story?
             </h3>
 
             <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-400">
@@ -192,10 +192,10 @@ const Testimonials = () => {
                 hover:scale-105
               "
             >
-              Start Your Project
+              Create your Project
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,83 +1,138 @@
 import React, { useState } from "react";
-import { FEATURES } from "../utils/constants";
-import { useProjectEstimator } from "../hooks/useProjectEstimator";
+import { motion, AnimatePresence } from "framer-motion";
 
-const ProjectEstimatorModal = ({ isOpen, onClose }) => {
+const EnquiryModal = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
 
-  const {
-    formData,
-    toggleFeature,
-    calculatePrice,
-    updateField,
-    resetForm,
-  } = useProjectEstimator();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    service: "",
+    budget: "",
+    message: "",
+  });
+
+  const updateField = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      service: "",
+      budget: "",
+      message: "",
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (
-      !formData.name?.trim() ||
-      !formData.email?.trim() ||
-      !formData.mobile?.trim()
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.mobile.trim()
     ) {
       return;
     }
 
+    console.log("Enquiry Submitted:", formData);
+
     setSubmitted(true);
 
     setTimeout(() => {
-      onClose();
       setSubmitted(false);
       resetForm();
+      onClose();
     }, 2500);
   };
 
   const handleClose = () => {
-    onClose();
-  };
+  resetForm();
+  setSubmitted(false);
+  onClose();
+};
 
-  if (!isOpen) return null;
+if (!isOpen) return null;
 
-  const estimate = calculatePrice();
+
 
   return (
-    <div
-      className="
-        fixed
-        inset-0
-        z-[999]
-        flex
-        items-center
-        justify-center
-        bg-black/40
-        backdrop-blur-xl
-        p-4
-      "
-      onClick={handleClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="
-w-full
-max-w-lg
-max-h-[90vh]
-overflow-y-auto
-scrollbar-hide
-rounded-[32px]
-border
-border-white/20
-bg-white/80
-backdrop-blur-3xl
-shadow-[0_25px_80px_rgba(15,23,42,0.15)]
+    <motion.div
+  initial={{
+    opacity: 0,
+    backdropFilter: "blur(0px)",
+  }}
+  animate={{
+    opacity: 1,
+    backdropFilter: "blur(12px)",
+  }}
+  exit={{
+    opacity: 0,
+    backdropFilter: "blur(0px)",
+  }}
+  transition={{
+    duration: 0.35,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="
+    fixed
+    inset-0
+    z-[999]
+    flex
+    items-center
+    justify-center
+    bg-black/30
+    p-4
+  "
+>
+      <motion.div
+  initial={{
+    opacity: 0,
+    scale: 0.92,
+    y: 40,
+    filter: "blur(12px)",
+  }}
+  animate={{
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    filter: "blur(0px)",
+  }}
+  exit={{
+    opacity: 0,
+    scale: 0.96,
+    y: 20,
+    filter: "blur(12px)",
+  }}
+  transition={{
+    duration: 0.45,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+ className="
+  relative
+  w-full
+  max-w-2xl
+  max-h-[90vh]
+  overflow-y-auto
+  rounded-3xl
+  bg-white
+  shadow-2xl
+  scrollbar-hide
 "
-      >
+>
         {/* Header */}
         <div
           className="
             sticky
             top-0
-            z-20
+            z-10
             flex
             items-center
             justify-between
@@ -90,237 +145,237 @@ shadow-[0_25px_80px_rgba(15,23,42,0.15)]
           "
         >
           <div>
-            <h3 className="text-xl font-bold text-slate-900">
-              ✨ Know Your Project
-            </h3>
+            <h2 className="text-xl font-bold text-slate-900">
+              Create your Project
+            </h2>
 
             <p className="mt-1 text-sm text-slate-500">
-              Get an instant project estimate
+              Tell us about your requirements
             </p>
           </div>
 
           <button
             onClick={handleClose}
             className="
-              flex
-              h-10
-              w-10
-              items-center
-              justify-center
               rounded-full
-              bg-white/70
-              text-slate-500
+              bg-white/80
+              px-4
+              py-2
+              text-sm
+              font-medium
+              text-slate-600
               transition
               hover:bg-white
             "
           >
-            ✕
+            Close
           </button>
         </div>
 
-        <div className="p-5 sm:p-6">
+        {/* Content */}
+        <div className="p-6">
           {!submitted ? (
-            <form onSubmit={handleSubmit}>
-              {/* Pages */}
-              <div className="mb-6">
-                <label className="mb-3 block text-sm font-semibold text-slate-700">
-                  Number of Pages
-                </label>
-
-                <div className="grid grid-cols-3 gap-3">
-                  {[3, 5, 10].map((p) => (
-                    <button
-                      key={p}
-                      type="button"
-                      onClick={() => updateField("pages", p)}
-                      className={`
-                        rounded-2xl
-                        py-3
-                        font-medium
-                        transition-all
-                        duration-300
-                        ${
-                          formData.pages === p
-                            ? "bg-indigo-600 text-white shadow-lg"
-                            : "bg-white/70 text-slate-600"
-                        }
-                      `}
-                    >
-                      {p}+ Pages
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="mb-6">
-                <label className="mb-3 block text-sm font-semibold text-slate-700">
-                  Features
-                </label>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {FEATURES.map((feature) => {
-                    const selected = formData.features.find(
-                      (f) => f.id === feature.id
-                    );
-
-                    return (
-                      <button
-                        key={feature.id}
-                        type="button"
-                        onClick={() => toggleFeature(feature)}
-                        className={`
-                          flex
-                          items-center
-                          gap-3
-                          rounded-2xl
-                          px-4
-                          py-3
-                          text-left
-                          text-sm
-                          font-medium
-                          transition-all
-                          duration-300
-                          backdrop-blur-xl
-                          ${
-                            selected
-                              ? "bg-indigo-600 text-white shadow-lg"
-                              : "bg-white/60 text-slate-700"
-                          }
-                        `}
-                      >
-                        <span className="text-lg">
-                          {feature.icon}
-                        </span>
-
-                        <span>{feature.name}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Estimate Card */}
-              <div
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={(e) =>
+                  updateField("name", e.target.value)
+                }
+                required
                 className="
-                  mb-6
-                  rounded-3xl
+                  w-full
+                  rounded-2xl
                   border
                   border-white/30
                   bg-white/70
-                  p-5
-                  backdrop-blur-2xl
+                  px-4
+                  py-4
+                  text-slate-900
+                  placeholder:text-slate-400
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-500
+                "
+              />
+
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={(e) =>
+                  updateField("email", e.target.value)
+                }
+                required
+                className="
+                  w-full
+                  rounded-2xl
+                  border
+                  border-white/30
+                  bg-white/70
+                  px-4
+                  py-4
+                  text-slate-900
+                  placeholder:text-slate-400
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-500
+                "
+              />
+
+              <input
+                type="tel"
+                placeholder="Mobile Number"
+                value={formData.mobile}
+                onChange={(e) =>
+                  updateField("mobile", e.target.value)
+                }
+                required
+                className="
+                  w-full
+                  rounded-2xl
+                  border
+                  border-white/30
+                  bg-white/70
+                  px-4
+                  py-4
+                  text-slate-900
+                  placeholder:text-slate-400
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-500
+                "
+              />
+
+              <select
+                value={formData.service}
+                onChange={(e) =>
+                  updateField("service", e.target.value)
+                }
+                className="
+                  w-full
+                  rounded-2xl
+                  border
+                  border-white/30
+                  bg-white/70
+                  px-4
+                  py-4
+                  text-slate-900
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-500
                 "
               >
-                <div className="text-sm text-slate-500">
-                  Estimated Investment
-                </div>
+                <option value="">
+                  Select Service
+                </option>
 
-                <div className="mt-2 text-3xl font-black text-indigo-600">
-                  {estimate.range}
-                </div>
+                <option value="Website Development">
+                  Website Development
+                </option>
 
-                <div className="mt-2 text-xs text-slate-500">
-                  Final pricing may vary depending on scope and
-                  project complexity.
-                </div>
+                <option value="Web Application">
+                  Web Application
+                </option>
+
+                <option value="UI/UX Design">
+                  UI/UX Design
+                </option>
+
+                <option value="SEO">
+                  SEO & Marketing
+                </option>
+
+                <option value="Custom">
+                  Custom Solution
+                </option>
+              </select>
+
+              <select
+                value={formData.budget}
+                onChange={(e) =>
+                  updateField("budget", e.target.value)
+                }
+                className="
+                  w-full
+                  rounded-2xl
+                  border
+                  border-white/30
+                  bg-white/70
+                  px-4
+                  py-4
+                  text-slate-900
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-500
+                "
+              >
+                <option value="">
+                  Project Budget
+                </option>
+
+                <option value="10k-25k">
+                  ₹10k - ₹25k
+                </option>
+
+                <option value="25k-50k">
+                  ₹25k - ₹50k
+                </option>
+
+                <option value="50k-100k">
+                  ₹50k - ₹100k
+                </option>
+
+                <option value="100k+">
+                  ₹100k+
+                </option>
+              </select>
+
+              <textarea
+                rows={5}
+                placeholder="Tell us about your project..."
+                value={formData.message}
+                onChange={(e) =>
+                  updateField("message", e.target.value)
+                }
+                className="
+                  w-full
+                  resize-none
+                  rounded-2xl
+                  border
+                  border-white/30
+                  bg-white/70
+                  px-4
+                  py-4
+                  text-slate-900
+                  placeholder:text-slate-400
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-500
+                "
+              />
+
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <p className="text-sm text-slate-600">
+                  Free consultation
+                </p>
+
+                <p className="text-sm text-slate-600">
+                  Transparent pricing
+                </p>
+
+                <p className="text-sm text-slate-600">
+                  Response within 24 hours
+                </p>
               </div>
 
-              {/* Contact */}
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    updateField("name", e.target.value)
-                  }
-                  required
-                  className="
-                    w-full
-                    rounded-2xl
-                    border
-                    border-white/30
-                    bg-white/70
-                    px-4
-                    py-4
-                    text-slate-900
-                    placeholder:text-slate-400
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-indigo-500
-                  "
-                />
-
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={(e) =>
-                    updateField("email", e.target.value)
-                  }
-                  required
-                  className="
-                    w-full
-                    rounded-2xl
-                    border
-                    border-white/30
-                    bg-white/70
-                    px-4
-                    py-4
-                    text-slate-900
-                    placeholder:text-slate-400
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-indigo-500
-                  "
-                />
-
-                <input
-                  type="tel"
-                  placeholder="Mobile Number"
-                  value={formData.mobile}
-                  onChange={(e) =>
-                    updateField("mobile", e.target.value)
-                  }
-                  required
-                  className="
-                    w-full
-                    rounded-2xl
-                    border
-                    border-white/30
-                    bg-white/70
-                    px-4
-                    py-4
-                    text-slate-900
-                    placeholder:text-slate-400
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-indigo-500
-                  "
-                />
-              </div>
-
-              {/* Trust */}
-              <div className="mt-5 rounded-2xl bg-slate-50 p-4">
-                <div className="text-sm text-slate-600">
-                  ✓ Free consultation
-                </div>
-
-                <div className="text-sm text-slate-600">
-                  ✓ No obligation quote
-                </div>
-
-                <div className="text-sm text-slate-600">
-                  ✓ Response within 24 hours
-                </div>
-              </div>
-
-              {/* CTA */}
               <button
                 type="submit"
                 className="
-                  mt-6
                   w-full
                   rounded-2xl
                   bg-gradient-to-r
@@ -334,52 +389,30 @@ shadow-[0_25px_80px_rgba(15,23,42,0.15)]
                   hover:scale-[1.02]
                 "
               >
-                Get My Project Estimate
+                Send Enquiry
               </button>
 
-              <p className="mt-4 text-center text-xs text-slate-500">
+              <p className="text-center text-xs text-slate-500">
                 Usually responds within 24 hours
               </p>
             </form>
           ) : (
-            <div className="py-10 text-center">
-              <div className="mb-5 text-6xl">
-                ✨
-              </div>
-
+            <div className="py-12 text-center">
               <h3 className="text-2xl font-bold text-slate-900">
-                Request Received
+                Enquiry Received
               </h3>
 
-              <p className="mt-3 text-slate-600">
-                Thank you for choosing Kairoza.
-                We'll contact you shortly.
+              <p className="mt-4 text-slate-600">
+                Thank you for contacting Kairoza.
+                We'll review your requirements and
+                get back to you shortly.
               </p>
-
-              <div
-                className="
-                  mt-6
-                  rounded-3xl
-                  border
-                  border-white/30
-                  bg-white/70
-                  p-5
-                "
-              >
-                <div className="text-sm text-slate-500">
-                  Estimated Budget
-                </div>
-
-                <div className="mt-2 text-3xl font-black text-indigo-600">
-                  {estimate.range}
-                </div>
-              </div>
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
-export default ProjectEstimatorModal;
+export default EnquiryModal;
