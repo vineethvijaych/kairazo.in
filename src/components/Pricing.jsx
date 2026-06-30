@@ -2,7 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import { PRICING_PLANS } from "../utils/constants";
 
-const Pricing = ({ onOpenEstimator }) => {
+const Pricing = ({ onOpenEstimator, onOpenConsultation }) => {
+  const handlePlanClick = (plan) => {
+    if (plan.price === "Custom") {
+      onOpenEstimator();
+    } else {
+      const featuresList = plan.features.map(f => `  ✅ ${f}`).join("\n");
+      const msg = encodeURIComponent(
+        `Hi Kairoza! I'm interested in the ${plan.name} plan (₹${plan.price}).\n\nHere's what I'm looking for:\n${featuresList}\n\nCan you share more details?`
+      );
+      window.open(`https://wa.me/919526673206?text=${msg}`, "_blank");
+    }
+  };
   return (
     <section
       id="pricing"
@@ -28,7 +39,7 @@ const Pricing = ({ onOpenEstimator }) => {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-400">
+          <div className="inline-flex rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-400">
             Pricing
           </div>
 
@@ -101,12 +112,12 @@ const Pricing = ({ onOpenEstimator }) => {
                 overflow-hidden
                 rounded-[32px]
                 border
-                backdrop-blur-xl
+                transform-gpu
                 transition-all
                 duration-300
                 ${
                   plan.popular
-                    ? "border-indigo-500 bg-gradient-to-b from-indigo-500/10 to-purple-500/10 shadow-[0_0_60px_rgba(99,102,241,0.25)] scale-105"
+                    ? "border-indigo-500 bg-gradient-to-b from-indigo-500/10 to-purple-500/10 shadow-[0_0_60px_rgba(99,102,241,0.25)] scale-[1.02]"
                     : "border-white/10 bg-white/[0.03]"
                 }
               `}
@@ -114,7 +125,7 @@ const Pricing = ({ onOpenEstimator }) => {
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute left-1/2 top-5 -translate-x-1/2">
-                  <div className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white">
+                  <div className="rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white">
                     Most Popular
                   </div>
                 </div>
@@ -132,13 +143,20 @@ const Pricing = ({ onOpenEstimator }) => {
                   </div>
 
                   <div className="mt-5 flex items-end gap-2">
-                    <span className="text-5xl font-black">
-                      ₹{plan.price}
-                    </span>
-
-                    <span className="pb-2 text-slate-500">
-                      starting
-                    </span>
+                    {plan.price === "Custom" ? (
+                      <span className="text-5xl font-black">
+                        Custom
+                      </span>
+                    ) : (
+                      <>
+                        <span className="text-5xl font-black">
+                          ₹{plan.price}
+                        </span>
+                        <span className="pb-2 text-slate-500">
+                          starting
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   <p className="mt-4 text-slate-400">
@@ -170,7 +188,7 @@ const Pricing = ({ onOpenEstimator }) => {
 
                 {/* CTA */}
                 <button
-                  onClick={onOpenEstimator}
+                  onClick={() => handlePlanClick(plan)}
                   className={`
                     mt-10
                     w-full
@@ -186,7 +204,7 @@ const Pricing = ({ onOpenEstimator }) => {
                     }
                   `}
                 >
-                  Get Custom Quote
+                  {plan.price === "Custom" ? "Get Custom Quote" : "Get Started"}
                 </button>
               </div>
             </motion.div>
@@ -198,7 +216,7 @@ const Pricing = ({ onOpenEstimator }) => {
           <div className="overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-10 backdrop-blur-xl">
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <div>
-                <div className="inline-flex rounded-full bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-400">
+                <div className="inline-flex rounded-lg bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-400">
                   Enterprise Solutions
                 </div>
 
@@ -217,7 +235,7 @@ const Pricing = ({ onOpenEstimator }) => {
 
               <div className="flex justify-center lg:justify-end">
                 <button
-                  onClick={onOpenEstimator}
+                  onClick={onOpenConsultation}
                   className="
                     rounded-2xl
                     bg-gradient-to-r

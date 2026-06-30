@@ -25,7 +25,7 @@ const cardVariants = {
   },
 };
 
-const Services = ({ onOpenEstimator }) => {
+const Services = ({ onOpenConsultation }) => {
   return (
     <section
       id="services"
@@ -53,7 +53,7 @@ const Services = ({ onOpenEstimator }) => {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-400">
+          <div className="inline-flex items-center rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-400">
             Services
           </div>
 
@@ -70,37 +70,6 @@ const Services = ({ onOpenEstimator }) => {
             retain more customers.
           </p>
         </div>
-
-        {/* Stats */}
-        {/* <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              value: "150+",
-              label: "Projects Delivered",
-            },
-            {
-              value: "98%",
-              label: "Client Satisfaction",
-            },
-            {
-              value: "5+",
-              label: "Years Experience",
-            },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-xl"
-            >
-              <div className="text-4xl font-black text-white">
-                {item.value}
-              </div>
-
-              <div className="mt-2 text-slate-400">
-                {item.label}
-              </div>
-            </div>
-          ))}
-        </div> */}
 
         {/* Service Cards */}
         <motion.div
@@ -125,17 +94,6 @@ const Services = ({ onOpenEstimator }) => {
               {/* Top Gradient */}
               <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500" />
 
-              {/* Number */}
-              {/* <div className="mb-8 flex items-center justify-between">
-                <div className="text-5xl">
-                  {service.icon}
-                </div>
-
-                <span className="text-sm font-bold text-slate-500">
-                  0{index + 1}
-                </span>
-              </div> */}
-
               {/* Title */}
               <h3 className="text-2xl font-bold text-white transition-colors group-hover:text-indigo-300">
                 {service.title}
@@ -145,29 +103,6 @@ const Services = ({ onOpenEstimator }) => {
               <p className="mt-4 text-sm leading-relaxed text-slate-400">
                 {service.desc}
               </p>
-
-              {/* Features */}
-              {/* <div className="mt-6 space-y-3">
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="h-2 w-2 rounded-full bg-indigo-500" />
-                  Premium Quality
-                </div>
-
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="h-2 w-2 rounded-full bg-cyan-500" />
-                  Scalable Solution
-                </div>
-
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="h-2 w-2 rounded-full bg-purple-500" />
-                  Growth Focused
-                </div>
-              </div> */}
-
-              {/* CTA */}
-              {/* <div className="mt-8 flex items-center text-sm font-semibold text-indigo-400 transition-transform duration-300 group-hover:translate-x-2">
-                Learn More →
-              </div> */}
 
               {/* Hover Glow */}
               <div className="absolute -bottom-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-indigo-500/20 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -188,7 +123,7 @@ const Services = ({ onOpenEstimator }) => {
             </p>
 
             <button
-  onClick={onOpenEstimator}
+  onClick={onOpenConsultation}
   className="
     mt-6
     rounded-2xl

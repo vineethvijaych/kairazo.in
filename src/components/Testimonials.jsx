@@ -28,7 +28,7 @@ const Testimonials = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-400">
+          <div className="inline-flex rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-400">
             Testimonials
           </div>
 
@@ -45,43 +45,8 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Trust Stats */}
-        {/* <div className="mt-16 grid gap-6 md:grid-cols-4">
-          {[
-            {
-              value: "150+",
-              label: "Projects Delivered",
-            },
-            {
-              value: "98%",
-              label: "Client Satisfaction",
-            },
-            {
-              value: "4.9★",
-              label: "Average Rating",
-            },
-            {
-              value: "24/7",
-              label: "Support",
-            },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-center backdrop-blur-xl"
-            >
-              <div className="text-4xl font-black bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                {item.value}
-              </div>
-
-              <div className="mt-2 text-slate-400">
-                {item.label}
-              </div>
-            </div>
-          ))}
-        </div> */}
-
         {/* Testimonials Grid */}
-        <div className="mt-20 grid gap-8 lg:grid-cols-3">
+        <div className="mt-20 grid gap-8 lg:grid-cols-2">
           {TESTIMONIALS.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -157,45 +122,13 @@ const Testimonials = () => {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute right-5 top-5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-400">
+              <div className="absolute right-5 top-5 rounded-lg bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-400">
                 Verified
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        {/* <div className="mt-24 text-center">
-          <div className="rounded-[40px] border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-12 backdrop-blur-xl">
-            <h3 className="text-4xl font-black"> */}
-              {/* Ready To Become Our Next Success Story?
-            </h3>
-
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-400">
-              Join businesses that are growing faster with modern websites,
-              web applications and digital marketing systems.
-            </p>
-
-            <button
-              className="
-                mt-8
-                rounded-2xl
-                bg-gradient-to-r
-                from-indigo-600
-                to-purple-600
-                px-8
-                py-4
-                font-semibold
-                text-white
-                shadow-[0_20px_50px_rgba(79,70,229,0.35)]
-                transition
-                hover:scale-105
-              "
-            >
-              Create your Project
-            </button>
-          </div>
-        </div> */}
       </div>
     </section>
   );

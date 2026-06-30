@@ -41,38 +41,6 @@ const LoadingScreen = () => {
       />
 
       <div className="relative text-center">
-        {/* <motion.div
-          initial={{
-            scale: 0.8,
-            opacity: 0,
-          }}
-          animate={{
-            scale: 1,
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            mx-auto
-            flex
-            h-20
-            w-20
-            items-center
-            justify-center
-            rounded-3xl
-            bg-gradient-to-br
-            from-indigo-600
-            to-purple-600
-            text-3xl
-            font-black
-            text-white
-            shadow-[0_20px_60px_rgba(79,70,229,0.35)]
-          "
-        >
-          k
-        </motion.div> */}
-
         <motion.h1
           initial={{
             opacity: 0,

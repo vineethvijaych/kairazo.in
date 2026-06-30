@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ onOpenLegal }) => {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
@@ -28,37 +28,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-3">
-                <div
-                  className="
-                    h-12
-                    w-12
-                    sm:h-14
-                    sm:w-14
-                    rounded-2xl
-                    bg-gradient-to-br
-                    from-indigo-600
-                    to-purple-600
-                    flex
-                    items-center
-                    justify-center
-                    text-lg
-                    sm:text-xl
-                    font-black
-                  "
-                >
-                  K
-                </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black tracking-wider">
+                  KAIROZA
+                </h2>
 
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-black tracking-wider">
-                    KAIROZA
-                  </h2>
-
-                  <p className="text-sm text-slate-500">
-                    Digital Growth Studio
-                  </p>
-                </div>
+                <p className="text-sm text-slate-500">
+                  Digital Growth Studio
+                </p>
               </div>
 
               <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
@@ -67,8 +44,20 @@ const Footer = () => {
               </p>
 
               <div className="mt-5 space-y-2 text-sm text-slate-400">
-                <div>📧 hello@kairoza.com</div>
-                <div>📞 +91 XXXXX XXXXX</div>
+                <a
+                  href="mailto:hello.kairoza@gmail.com"
+                  className="flex items-center gap-2 hover:text-indigo-400 transition"
+                >
+                  📧 hello.kairoza@gmail.com
+                </a>
+                <a
+                  href="https://wa.me/919526673206"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-green-400 transition"
+                >
+                  📞 +91 95266 73206
+                </a>
                 <div>📍 Kerala, India</div>
               </div>
             </div>
@@ -128,26 +117,16 @@ const Footer = () => {
                 Ready to transform your business with a premium
                 digital presence?
               </p>
- <button
-              onClick={scrollToTop}
-              className="
-                h-10
-                w-10
-                sm:h-12
-                sm:w-12
-                rounded-2xl
-                bg-white/5
-                border
-                border-white/10
-                hover:border-indigo-500
-                transition
-              "
-            >
-              ↑
-            </button>
-              {/* <button
+
+              <a
+                href="https://wa.me/919526673206"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
                   mt-6
+                  inline-flex
+                  items-center
+                  gap-2
                   rounded-2xl
                   bg-gradient-to-r
                   from-indigo-600
@@ -160,57 +139,8 @@ const Footer = () => {
                   hover:scale-105
                 "
               >
-                Start Project →
-              </button> */}
-
-              {/* Social Links */}
-              {/* <div className="flex flex-wrap gap-3 mt-6">
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                    h-10
-                    w-10
-                    sm:h-12
-                    sm:w-12
-                    rounded-2xl
-                    bg-white/5
-                    border
-                    border-white/10
-                    flex
-                    items-center
-                    justify-center
-                    hover:border-indigo-500
-                    transition
-                  "
-                >
-                  💼
-                </a>
-
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                    h-10
-                    w-10
-                    sm:h-12
-                    sm:w-12
-                    rounded-2xl
-                    bg-white/5
-                    border
-                    border-white/10
-                    flex
-                    items-center
-                    justify-center
-                    hover:border-pink-500
-                    transition
-                  "
-                >
-                  📷
-                </a>
-              </div> */}
+                💬 WhatsApp Us
+              </a>
             </div>
           </div>
         </div>
@@ -248,16 +178,16 @@ const Footer = () => {
                 text-slate-500
               "
             >
-              <button className="hover:text-white">
+              <button onClick={() => onOpenLegal("privacy")} className="hover:text-white">
                 Privacy Policy
               </button>
 
-              <button className="hover:text-white">
+              <button onClick={() => onOpenLegal("terms")} className="hover:text-white">
                 Terms of Service
               </button>
             </div>
 
-            {/* <button
+            <button
               onClick={scrollToTop}
               className="
                 h-10
@@ -270,10 +200,15 @@ const Footer = () => {
                 border-white/10
                 hover:border-indigo-500
                 transition
+                flex
+                items-center
+                justify-center
+                text-slate-400
+                hover:text-white
               "
             >
               ↑
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

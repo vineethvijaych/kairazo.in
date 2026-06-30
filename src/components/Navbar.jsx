@@ -78,14 +78,6 @@ const Navbar = ({ onOpenEstimator }) => {
               }
               className="flex cursor-pointer items-center gap-3"
             >
-              <div className="relative">
-                <div className="absolute inset-0 rounded-xl bg-indigo-500 blur-md opacity-40" />
-
-                {/* <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-lg font-black text-white shadow-lg">
-                  K
-                </div> */}
-              </div>
-
               <div>
                 <div className="text-xl font-black tracking-wider text-slate-900">
                   KAIROZA
@@ -158,11 +150,10 @@ const Navbar = ({ onOpenEstimator }) => {
                 items-center
                 justify-center
                 rounded-2xl
-                
+                border
                 border-white/30
-                
+                bg-white/30
                 backdrop-blur-xl
-                
                 md:hidden
               "
             >

@@ -62,7 +62,7 @@ const CTA = ({ onOpenEstimator }) => {
               className="
                 inline-flex
                 items-center
-                rounded-full
+                rounded-lg
                 border
                 border-indigo-200
                 bg-indigo-50

@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 
 const EnquiryModal = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -18,6 +20,7 @@ const EnquiryModal = ({ isOpen, onClose }) => {
       ...prev,
       [field]: value,
     }));
+    if (error) setError("");
   };
 
   const resetForm = () => {
@@ -29,104 +32,87 @@ const EnquiryModal = ({ isOpen, onClose }) => {
       budget: "",
       message: "",
     });
+    setError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.mobile.trim()
-    ) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.mobile.trim()) {
+      setError("Please fill in Name, Email and Mobile.");
       return;
     }
 
-    console.log("Enquiry Submitted:", formData);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
 
+    if (formData.mobile.replace(/\D/g, "").length < 10) {
+      setError("Please enter a valid mobile number.");
+      return;
+    }
+
+    setSending(true);
+    setError("");
+
+    const waMessage = encodeURIComponent(
+      `*New Enquiry from Kairoza Website*\n\n` +
+      `*Name:* ${formData.name}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Mobile:* ${formData.mobile}\n` +
+      `*Service:* ${formData.service || "Not specified"}\n` +
+      `*Budget:* ${formData.budget || "Not specified"}\n` +
+      `*Message:* ${formData.message || "No details"}`
+    );
+
+    window.open(`https://wa.me/919526673206?text=${waMessage}`, "_blank");
     setSubmitted(true);
+    setSending(false);
 
     setTimeout(() => {
       setSubmitted(false);
       resetForm();
       onClose();
-    }, 2500);
+    }, 2800);
   };
 
   const handleClose = () => {
-  resetForm();
-  setSubmitted(false);
-  onClose();
-};
+    resetForm();
+    setSubmitted(false);
+    setSending(false);
+    onClose();
+  };
 
-if (!isOpen) return null;
-
-
+  if (!isOpen) return null;
 
   return (
     <motion.div
-  initial={{
-    opacity: 0,
-    backdropFilter: "blur(0px)",
-  }}
-  animate={{
-    opacity: 1,
-    backdropFilter: "blur(12px)",
-  }}
-  exit={{
-    opacity: 0,
-    backdropFilter: "blur(0px)",
-  }}
-  transition={{
-    duration: 0.35,
-    ease: [0.22, 1, 0.36, 1],
-  }}
-  className="
-    fixed
-    inset-0
-    z-[999]
-    flex
-    items-center
-    justify-center
-    bg-black/30
-    p-4
-  "
->
+      initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+      animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
+      exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/30 p-4"
+      onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
+    >
       <motion.div
-  initial={{
-    opacity: 0,
-    scale: 0.92,
-    y: 40,
-    filter: "blur(12px)",
-  }}
-  animate={{
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    filter: "blur(0px)",
-  }}
-  exit={{
-    opacity: 0,
-    scale: 0.96,
-    y: 20,
-    filter: "blur(12px)",
-  }}
-  transition={{
-    duration: 0.45,
-    ease: [0.22, 1, 0.36, 1],
-  }}
- className="
-  relative
-  w-full
-  max-w-2xl
-  max-h-[90vh]
-  overflow-y-auto
-  rounded-3xl
-  bg-white
-  shadow-2xl
-  scrollbar-hide
-"
->
+        initial={{ opacity: 0, scale: 0.92, y: 40, filter: "blur(12px)" }}
+        animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+        exit={{ opacity: 0, scale: 0.96, y: 20, filter: "blur(12px)" }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className="
+          relative
+          w-full
+          max-w-2xl
+          max-h-[90vh]
+          overflow-y-auto
+          rounded-3xl
+          bg-white
+          shadow-2xl
+          scrollbar-hide
+        "
+      >
         {/* Header */}
         <div
           className="
@@ -137,8 +123,8 @@ if (!isOpen) return null;
             items-center
             justify-between
             border-b
-            border-white/30
-            bg-white/70
+            border-slate-100
+            bg-white/90
             px-6
             py-5
             backdrop-blur-2xl
@@ -158,14 +144,14 @@ if (!isOpen) return null;
             onClick={handleClose}
             className="
               rounded-full
-              bg-white/80
+              bg-slate-100
               px-4
               py-2
               text-sm
               font-medium
               text-slate-600
               transition
-              hover:bg-white
+              hover:bg-slate-200
             "
           >
             Close
@@ -175,24 +161,19 @@ if (!isOpen) return null;
         {/* Content */}
         <div className="p-6">
           {!submitted ? (
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-4"
-            >
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
-                placeholder="Full Name"
+                placeholder="Full Name *"
                 value={formData.name}
-                onChange={(e) =>
-                  updateField("name", e.target.value)
-                }
+                onChange={(e) => updateField("name", e.target.value)}
                 required
                 className="
                   w-full
                   rounded-2xl
                   border
-                  border-white/30
-                  bg-white/70
+                  border-slate-200
+                  bg-slate-50
                   px-4
                   py-4
                   text-slate-900
@@ -200,23 +181,23 @@ if (!isOpen) return null;
                   focus:outline-none
                   focus:ring-2
                   focus:ring-indigo-500
+                  focus:border-transparent
+                  transition
                 "
               />
 
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="Email Address *"
                 value={formData.email}
-                onChange={(e) =>
-                  updateField("email", e.target.value)
-                }
+                onChange={(e) => updateField("email", e.target.value)}
                 required
                 className="
                   w-full
                   rounded-2xl
                   border
-                  border-white/30
-                  bg-white/70
+                  border-slate-200
+                  bg-slate-50
                   px-4
                   py-4
                   text-slate-900
@@ -224,23 +205,23 @@ if (!isOpen) return null;
                   focus:outline-none
                   focus:ring-2
                   focus:ring-indigo-500
+                  focus:border-transparent
+                  transition
                 "
               />
 
               <input
                 type="tel"
-                placeholder="Mobile Number"
+                placeholder="Mobile Number * (WhatsApp preferred)"
                 value={formData.mobile}
-                onChange={(e) =>
-                  updateField("mobile", e.target.value)
-                }
+                onChange={(e) => updateField("mobile", e.target.value)}
                 required
                 className="
                   w-full
                   rounded-2xl
                   border
-                  border-white/30
-                  bg-white/70
+                  border-slate-200
+                  bg-slate-50
                   px-4
                   py-4
                   text-slate-900
@@ -248,107 +229,77 @@ if (!isOpen) return null;
                   focus:outline-none
                   focus:ring-2
                   focus:ring-indigo-500
+                  focus:border-transparent
+                  transition
                 "
               />
 
               <select
                 value={formData.service}
-                onChange={(e) =>
-                  updateField("service", e.target.value)
-                }
+                onChange={(e) => updateField("service", e.target.value)}
                 className="
                   w-full
                   rounded-2xl
                   border
-                  border-white/30
-                  bg-white/70
+                  border-slate-200
+                  bg-slate-50
                   px-4
                   py-4
                   text-slate-900
                   focus:outline-none
                   focus:ring-2
                   focus:ring-indigo-500
+                  focus:border-transparent
+                  transition
                 "
               >
-                <option value="">
-                  Select Service
-                </option>
-
-                <option value="Website Development">
-                  Website Development
-                </option>
-
-                <option value="Web Application">
-                  Web Application
-                </option>
-
-                <option value="UI/UX Design">
-                  UI/UX Design
-                </option>
-
-                <option value="SEO">
-                  SEO & Marketing
-                </option>
-
-                <option value="Custom">
-                  Custom Solution
-                </option>
+                <option value="">Select Service (optional)</option>
+                <option value="Website Development">Website Development</option>
+                <option value="Web Application">Web Application</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="SEO & Marketing">SEO & Marketing</option>
+                <option value="Custom Solution">Custom Solution</option>
               </select>
 
               <select
                 value={formData.budget}
-                onChange={(e) =>
-                  updateField("budget", e.target.value)
-                }
+                onChange={(e) => updateField("budget", e.target.value)}
                 className="
                   w-full
                   rounded-2xl
                   border
-                  border-white/30
-                  bg-white/70
+                  border-slate-200
+                  bg-slate-50
                   px-4
                   py-4
                   text-slate-900
                   focus:outline-none
                   focus:ring-2
                   focus:ring-indigo-500
+                  focus:border-transparent
+                  transition
                 "
               >
-                <option value="">
-                  Project Budget
-                </option>
-
-                <option value="10k-25k">
-                  ₹10k - ₹25k
-                </option>
-
-                <option value="25k-50k">
-                  ₹25k - ₹50k
-                </option>
-
-                <option value="50k-100k">
-                  ₹50k - ₹100k
-                </option>
-
-                <option value="100k+">
-                  ₹100k+
-                </option>
+                <option value="">Project Budget (optional)</option>
+                <option value="Under ₹10k">Under ₹10k</option>
+                <option value="₹10k – ₹25k">₹10k – ₹25k</option>
+                <option value="₹25k – ₹50k">₹25k – ₹50k</option>
+                <option value="₹50k – ₹1L">₹50k – ₹1L</option>
+                <option value="₹1L+">₹1L+</option>
               </select>
 
               <textarea
-                rows={5}
+                rows={4}
                 placeholder="Tell us about your project..."
                 value={formData.message}
-                onChange={(e) =>
-                  updateField("message", e.target.value)
-                }
+                onChange={(e) => updateField("message", e.target.value)}
                 className="
                   w-full
                   resize-none
                   rounded-2xl
                   border
-                  border-white/30
-                  bg-white/70
+                  border-slate-200
+                  bg-slate-50
                   px-4
                   py-4
                   text-slate-900
@@ -356,25 +307,28 @@ if (!isOpen) return null;
                   focus:outline-none
                   focus:ring-2
                   focus:ring-indigo-500
+                  focus:border-transparent
+                  transition
                 "
               />
 
-              <div className="rounded-2xl bg-slate-50 p-4">
-                <p className="text-sm text-slate-600">
-                  Free consultation
-                </p>
+              {/* Error Message */}
+              {error && (
+                <div className="rounded-2xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600">
+                  {error}
+                </div>
+              )}
 
-                <p className="text-sm text-slate-600">
-                  Transparent pricing
-                </p>
-
-                <p className="text-sm text-slate-600">
-                  Response within 24 hours
-                </p>
+              {/* Trust Badges */}
+              <div className="rounded-2xl bg-slate-50 p-4 flex flex-wrap gap-4 text-sm text-slate-600">
+                <span>✅ Free consultation</span>
+                <span>✅ Transparent pricing</span>
+                <span>✅ Response within 24 hours</span>
               </div>
 
               <button
                 type="submit"
+                disabled={sending}
                 className="
                   w-full
                   rounded-2xl
@@ -387,27 +341,33 @@ if (!isOpen) return null;
                   shadow-[0_10px_30px_rgba(99,102,241,0.35)]
                   transition
                   hover:scale-[1.02]
+                  disabled:opacity-70
+                  disabled:cursor-not-allowed
+                  disabled:hover:scale-100
                 "
               >
-                Send Enquiry
+                {sending ? "Sending…" : "Send Enquiry →"}
               </button>
 
-              <p className="text-center text-xs text-slate-500">
-                Usually responds within 24 hours
+              <p className="text-center text-xs text-slate-400">
+                Usually responds within 24 hours • No spam, ever
               </p>
             </form>
           ) : (
-            <div className="py-12 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="py-14 text-center"
+            >
+              <div className="text-5xl mb-4">🎉</div>
               <h3 className="text-2xl font-bold text-slate-900">
-                Enquiry Received
+                Enquiry Received!
               </h3>
-
-              <p className="mt-4 text-slate-600">
-                Thank you for contacting Kairoza.
-                We'll review your requirements and
-                get back to you shortly.
+              <p className="mt-4 text-slate-600 max-w-sm mx-auto leading-relaxed">
+                Thank you for contacting Kairoza. We'll review your
+                requirements and get back to you within 24 hours.
               </p>
-            </div>
+            </motion.div>
           )}
         </div>
       </motion.div>

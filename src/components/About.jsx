@@ -64,7 +64,7 @@ const About = () => {
               items-center
               px-4
               py-2
-              rounded-full
+              rounded-lg
               border
               border-indigo-200
               bg-indigo-50
@@ -156,7 +156,7 @@ const About = () => {
                   className="
                     px-5
                     py-2
-                    rounded-full
+                    rounded-lg
                     border
                     border-slate-200
                     bg-white
@@ -258,46 +258,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* CTA */}
-        {/* <div className="mt-28">
-          <div
-            className="
-              rounded-[40px]
-              border
-              border-slate-200
-              bg-white
-              p-12
-              text-center
-            "
-          >
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900">
-              Ready To Build Something Exceptional?
-            </h3>
-
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-slate-600">
-              Let's discuss your goals and create a digital product
-              designed to drive measurable business growth.
-            </p>
-
-            <button
-              className="
-                mt-8
-                px-8
-                py-4
-                rounded-2xl
-                bg-gradient-to-r
-                from-indigo-600
-                to-purple-600
-                text-white
-                font-semibold
-                transition
-                hover:scale-105
-              "
-            >
-              Create your Project
-            </button>
-          </div>
-        </div> */}
       </div>
     </section>
   );

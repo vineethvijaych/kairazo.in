@@ -9,7 +9,7 @@ const projects = [
       "Transformed an Instagram-based jewelry business into a premium online store focused on conversions, trust and scalable growth.",
     url: "https://anjisjewel.com",
       
-       image: "/projects/WhatsApp Image 2026-06-04 at 3.57.03 PM.jpeg",
+        image: "/projects/anjis-jewel.jpeg",
 
     gradient:
       "from-indigo-500 via-purple-500 to-pink-500",
@@ -25,7 +25,8 @@ const projects = [
     description:
       "Built a lead-generation platform optimized for local search visibility, inquiries and long-term organic growth.",
     url: "https://klrentals.in",
- image: "/projects/WhatsApp Image 2026-06-04 at 3.57.03 PM (1).jpeg",    gradient:
+      image: "/projects/kl-rentals.jpeg",
+    gradient:
       "from-cyan-500 via-indigo-500 to-blue-600",
     stats: [
       "SEO Optimized",
@@ -51,7 +52,7 @@ const Work = ({ onOpenEstimator }) => {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-600">
+          <div className="inline-flex rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-600">
             Portfolio
           </div>
 
@@ -67,37 +68,6 @@ const Work = ({ onOpenEstimator }) => {
             generate leads, increase trust and help businesses grow.
           </p>
         </div>
-
-        {/* Stats */}
-        {/* <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              value: "150+",
-              label: "Projects Delivered",
-            },
-            {
-              value: "98%",
-              label: "Client Satisfaction",
-            },
-            {
-              value: "5+",
-              label: "Years Experience",
-            },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm"
-            >
-              <div className="text-4xl font-black text-slate-900">
-                {item.value}
-              </div>
-
-              <div className="mt-2 text-slate-500">
-                {item.label}
-              </div>
-            </div>
-          ))}
-        </div> */}
 
         {/* Projects */}
         <div className="mt-24 space-y-10">
@@ -208,45 +178,12 @@ const Work = ({ onOpenEstimator }) => {
                     {project.stats.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700"
+                        className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
-
-                  {/* Result Cards */}
-                  {/* <div className="mt-10 grid grid-cols-3 gap-4">
-                    <div className="rounded-2xl bg-slate-50 p-4">
-                      <div className="text-2xl font-black text-slate-900">
-                        +120%
-                      </div>
-
-                      <div className="text-xs text-slate-500">
-                        Growth
-                      </div>
-                    </div>
-
-                    <div className="rounded-2xl bg-slate-50 p-4">
-                      <div className="text-2xl font-black text-slate-900">
-                        95+
-                      </div>
-
-                      <div className="text-xs text-slate-500">
-                        Leads
-                      </div>
-                    </div>
-
-                    <div className="rounded-2xl bg-slate-50 p-4">
-                      <div className="text-2xl font-black text-slate-900">
-                        4.9★
-                      </div>
-
-                      <div className="text-xs text-slate-500">
-                        Rating
-                      </div>
-                    </div>
-                  </div> */}
 
                   {/* CTA */}
                   <div className="mt-10">

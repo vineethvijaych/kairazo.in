@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-
-
 const Hero = ({ onOpenEstimator }) => {
   const scrollToWork = () => {
     document.getElementById("work")?.scrollIntoView({
@@ -49,7 +47,7 @@ const Hero = ({ onOpenEstimator }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-100/70 px-4 py-2 text-sm font-medium text-indigo-700 backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-100/70 px-4 py-2 text-sm font-medium text-indigo-700 backdrop-blur"
             >
               <span className="h-2 w-2 rounded-full bg-green-500" />
               Trusted By Growing Businesses
@@ -138,28 +136,6 @@ const Hero = ({ onOpenEstimator }) => {
               </button>
             </motion.div>
 
-            {/* Stats */}
-            {/* <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.5,
-              }}
-              className="mt-14 grid grid-cols-3 gap-6 border-t border-slate-200 pt-8"
-            >
-              {stats.map((item) => (
-                <div key={item.label}>
-                  <div className="text-3xl font-black text-slate-900">
-                    {item.value}
-                  </div>
-
-                  <div className="mt-1 text-sm text-slate-500">
-                    {item.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div> */}
-
             {/* Social Proof */}
             <div className="mt-12">
               <p className="mb-4 text-sm font-medium text-slate-500">
@@ -175,7 +151,7 @@ const Hero = ({ onOpenEstimator }) => {
                 ].map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600"
+                    className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600"
                   >
                     {item}
                   </span>
@@ -267,24 +243,20 @@ const Hero = ({ onOpenEstimator }) => {
               {/* Metrics */}
               <div className="mt-5 grid grid-cols-3 gap-3">
                 {[
-                  "Leads",
-                  "Traffic",
-                  "Sales",
+                  { label: "Leads", value: "+68%" },
+                  { label: "Traffic", value: "+92%" },
+                  { label: "Sales", value: "+45%" },
                 ].map((metric) => (
                   <div
-                    key={metric}
+                    key={metric.label}
                     className="rounded-xl bg-slate-50 p-4"
                   >
                     <div className="text-xs text-slate-500">
-                      {metric}
+                      {metric.label}
                     </div>
 
                     <div className="mt-2 text-xl font-bold text-slate-900">
-                      +
-                      {Math.floor(
-                        Math.random() * 80 + 20
-                      )}
-                      %
+                      {metric.value}
                     </div>
                   </div>
                 ))}
