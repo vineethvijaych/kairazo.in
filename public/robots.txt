@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kairoza.in/sitemap.xml
+Sitemap: https://www.kairoza.in/sitemap.xml
