@@ -5,252 +5,115 @@ const projects = [
   {
     title: "Anjis Jewel",
     category: "Luxury eCommerce",
-    description:
-      "Transformed an Instagram-based jewelry business into a premium online store focused on conversions, trust and scalable growth.",
+    description: "Premium online store built for conversions and scalable growth.",
     url: "https://anjisjewel.com",
-      
-        image: "/projects/anjis-jewel.jpeg",
-
-    gradient:
-      "from-indigo-500 via-purple-500 to-pink-500",
-    stats: [
-      "Premium Branding",
-      "Mobile Optimized",
-      "Conversion Focused",
-    ],
+    image: "/projects/anjis-jewel.jpeg",
   },
   {
     title: "KL Rentals",
     category: "Rental Marketplace",
-    description:
-      "Built a lead-generation platform optimized for local search visibility, inquiries and long-term organic growth.",
+    description: "Lead-generation platform optimized for local search and organic growth.",
     url: "https://klrentals.in",
-      image: "/projects/kl-rentals.jpeg",
-    gradient:
-      "from-cyan-500 via-indigo-500 to-blue-600",
-    stats: [
-      "SEO Optimized",
-      "Lead Generation",
-      "Fast Performance",
-    ],
+    image: "/projects/kl-rentals.jpeg",
+  },
+  {
+    title: "Sree Narayana College of Management Studies, Periya",
+    category: "Educational Institution Website",
+    description: "Designed and developed a modern, responsive college website with a clean user experience and easy content management. The platform showcases academic programs, departments, faculty, campus facilities, news, events, placements, admissions, and institutional information while ensuring accessibility across all devices.",
+    url: "https://www.sncmsperiya.in/",
+    image: "/projects/snc-periya.jpeg",
   },
 ];
 
 const Work = ({ onOpenEstimator }) => {
   return (
-    <section
-      id="work"
-      className="relative overflow-hidden bg-white py-28"
-    >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-3xl" />
-
-        <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500/5 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-indigo-600">
-            Portfolio
+    <section id="work" className="relative bg-stone-50 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-3xl"
+        >
+          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-stone-400">
+            01 / Work
           </div>
-
-          <h2 className="mt-6 text-4xl font-black text-slate-900 md:text-6xl">
-            Products That Drive
-            <span className="block bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-              Real Results
-            </span>
+          <h2 className="mt-4 text-3xl font-black text-stone-900 md:text-5xl">
+            Recent Projects
           </h2>
+        </motion.div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600">
-            We build digital experiences that don't just look great—they
-            generate leads, increase trust and help businesses grow.
-          </p>
-        </div>
-
-        {/* Projects */}
-        <div className="mt-24 space-y-10">
+        <div className="mt-16 space-y-20">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-              }}
-              className={`
-                group
-                relative
-                overflow-hidden
-                rounded-[32px]
-                border
-                border-slate-200
-                bg-white
-                shadow-lg
-                hover:shadow-2xl
-                transition-all
-                duration-500
-              `}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
             >
-              <div className="grid lg:grid-cols-2">
-                {/* Showcase */}
-                <div
-                  className={`
-                    relative
-                    min-h-[500px]
-                    overflow-hidden
-                    bg-gradient-to-br
-                    ${project.gradient}
-                  `}
-                >
-                  {/* Glow */}
-                  <div className="absolute inset-0 bg-black/10" />
-
-                <motion.div
-  whileHover={{
-    scale: 1.05,
-  }}
-  transition={{
-    duration: 0.5,
-  }}
-  className="absolute inset-0 p-8"
->
-  <img
-  src={project.image}
-  alt={project.title}
-  className="
-    h-full
-    w-full
-    rounded-3xl
-    object-cover
-    shadow-[0_25px_80px_rgba(0,0,0,0.25)]
-    border
-    border-white/20
-    transition-transform
-    duration-700
-    group-hover:scale-[1.03]
-  "
-/>
-</motion.div>
-
-                  {/* Floating Card */}
-                  <div className="absolute left-8 top-8 rounded-2xl bg-white/15 px-4 py-2 text-sm font-semibold text-white backdrop-blur-xl">
-                    Featured Project
-                  </div>
-
-                  <div className="absolute bottom-8 left-8 rounded-2xl bg-white/15 p-5 backdrop-blur-xl">
-                    <div className="text-sm text-white/70">
-                      Project Type
-                    </div>
-
-                    <div className="mt-1 text-lg font-bold text-white">
-                      {project.category}
-                    </div>
-                  </div>
+              <div className={`grid items-center gap-10 md:grid-cols-2 ${index % 2 === 1 ? "md:direction-rtl" : ""}`}>
+                <div className="group relative overflow-hidden rounded-2xl bg-stone-100">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-[400px] w-full object-cover transition duration-700 group-hover:scale-105 md:h-[500px]"
+                  />
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-500 group-hover:bg-black/40"
+                  >
+                    <span className="translate-y-4 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white opacity-0 backdrop-blur-sm transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      Visit Site
+                    </span>
+                  </a>
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-col justify-center p-10 lg:p-14">
-                  <div className="text-sm font-semibold uppercase tracking-widest text-indigo-600">
+                <div className={index % 2 === 1 ? "md:order-first" : ""}>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-brand-600">
                     {project.category}
                   </div>
-
-                  <h3 className="mt-4 text-4xl font-black text-slate-900">
+                  <h3 className="mt-3 text-3xl font-black text-stone-900 md:text-4xl">
                     {project.title}
                   </h3>
-
-                  <p className="mt-5 text-lg leading-relaxed text-slate-600">
+                  <p className="mt-4 leading-relaxed text-stone-500">
                     {project.description}
                   </p>
-
-                  {/* Features */}
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {project.stats.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <div className="mt-10">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="
-                        inline-flex
-                        items-center
-                        gap-2
-                        rounded-2xl
-                        bg-gradient-to-r
-                        from-indigo-600
-                        to-purple-600
-                        px-7
-                        py-4
-                        font-semibold
-                        text-white
-                        shadow-[0_15px_40px_rgba(79,70,229,0.3)]
-                        transition
-                        hover:scale-105
-                      "
-                    >
-                      Visit Website
-                      <span>↗</span>
-                    </a>
-                  </div>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-stone-900 transition hover:text-brand-600"
+                  >
+                    View Project
+                    <span className="text-lg">&rarr;</span>
+                  </a>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-24 text-center">
-          <div className="rounded-[32px] border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-12 shadow-sm">
-            <h3 className="text-3xl font-black text-slate-900">
-              Your Project Could Be Next
-            </h3>
-
-            <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-              We're focused on building websites and digital products that
-              create measurable business growth.
-            </p>
-
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-20 text-center"
+        >
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <button
-  onClick={onOpenEstimator}
-  className="
-    mt-8
-    rounded-2xl
-    bg-gradient-to-r
-    from-indigo-600
-    to-purple-600
-    px-8
-    py-4
-    font-semibold
-    text-white
-    shadow-[0_20px_50px_rgba(79,70,229,0.3)]
-    transition
-    hover:scale-105
-  "
->
-  Create your Project
-</button>
+              onClick={onOpenEstimator}
+              className="rounded-xl bg-brand-500 px-8 py-4 text-base font-semibold text-white transition hover:bg-brand-600"
+            >
+              Start Your Project
+            </button>
+
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
