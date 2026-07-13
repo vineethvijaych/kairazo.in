@@ -47,7 +47,7 @@ const About = () => {
   const t = TESTIMONIALS[current];
 
   return (
-    <section id="about" className="relative bg-zinc-950 py-24 md:py-32">
+    <section id="about" className="relative bg-zinc-950 py-24 md:py-32" aria-labelledby="about-heading">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,7 +59,7 @@ const About = () => {
           <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-zinc-500 sm:text-xs">
             04 / About
           </div>
-          <h2 className="mt-4 text-2xl font-black text-white sm:text-3xl md:text-5xl">
+          <h2 id="about-heading" className="mt-4 text-2xl font-black text-white sm:text-3xl md:text-5xl">
             How We Work
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
@@ -75,7 +75,7 @@ const About = () => {
           className="mt-16 grid gap-6 md:grid-cols-3"
         >
           {strengths.map((item, index) => (
-            <motion.div
+            <motion.article
               key={item.title}
               variants={{
                 hidden: { opacity: 0, y: 40 },
@@ -89,7 +89,7 @@ const About = () => {
               </div>
               <h3 className="mt-4 text-base font-bold text-white sm:mt-6 sm:text-lg">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400 sm:mt-3 sm:text-base">{item.description}</p>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 
@@ -106,7 +106,7 @@ const About = () => {
           <div className="relative mt-16">
             <div onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
               <AnimatePresence mode="wait">
-                <motion.div
+                <motion.blockquote
                   key={current}
                   variants={variants}
                   initial="enter"
@@ -117,15 +117,15 @@ const About = () => {
                   className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700 sm:p-8"
                 >
                   <p className="leading-relaxed text-zinc-300">&ldquo;{t.text}&rdquo;</p>
-                  <div className="mt-6 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/15 text-sm font-bold text-brand-500">
+                  <footer className="mt-6 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/15 text-sm font-bold text-brand-500" aria-hidden="true">
                       {t.author.charAt(0)}
                     </div>
-                    <div className="text-sm font-semibold text-white">{t.author}</div>
-                  </div>
-                </motion.div>
+                    <cite className="text-sm font-semibold text-white not-italic">{t.author}</cite>
+                  </footer>
+                </motion.blockquote>
               </AnimatePresence>
-              <div className="mt-6 flex items-center justify-center gap-2">
+              <nav className="mt-6 flex items-center justify-center gap-2" aria-label="Testimonial navigation">
                 {TESTIMONIALS.map((_, i) => (
                   <button
                     key={i}
@@ -133,10 +133,10 @@ const About = () => {
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       i === current ? "w-6 bg-brand-500" : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
                     }`}
-                    aria-label={`Go to testimonial ${i + 1}`}
+                    aria-label={`Go to testimonial ${i + 1}${TESTIMONIALS[i] ? `: ${TESTIMONIALS[i].author}` : ""}`}
                   />
                 ))}
-              </div>
+              </nav>
             </div>
           </div>
         </motion.div>

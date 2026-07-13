@@ -84,6 +84,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
       transition={{ duration: 0.35 }}
       className="fixed inset-0 z-[999] flex items-center justify-center bg-black/30 p-4"
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Create your project enquiry"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.92, y: 40 }}
@@ -108,7 +111,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
         <div className="p-6">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
+              <label className="sr-only" htmlFor="enq-name">Full Name</label>
               <input
+                id="enq-name"
                 type="text"
                 placeholder="Full Name *"
                 value={formData.name}
@@ -117,7 +122,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
               />
 
+              <label className="sr-only" htmlFor="enq-email">Email Address</label>
               <input
+                id="enq-email"
                 type="email"
                 placeholder="Email Address *"
                 value={formData.email}
@@ -126,7 +133,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
               />
 
+              <label className="sr-only" htmlFor="enq-mobile">Mobile Number</label>
               <input
+                id="enq-mobile"
                 type="tel"
                 placeholder="Mobile Number * (WhatsApp preferred)"
                 value={formData.mobile}
@@ -135,7 +144,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
               />
 
+              <label className="sr-only" htmlFor="enq-service">Service</label>
               <select
+                id="enq-service"
                 value={formData.service}
                 onChange={(e) => updateField("service", e.target.value)}
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
@@ -148,7 +159,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
                 <option value="Custom Solution">Custom Solution</option>
               </select>
 
+              <label className="sr-only" htmlFor="enq-budget">Project Budget</label>
               <select
+                id="enq-budget"
                 value={formData.budget}
                 onChange={(e) => updateField("budget", e.target.value)}
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
@@ -161,7 +174,9 @@ const EnquiryModal = ({ isOpen, onClose }) => {
                 <option value="₹1L+">₹1L+</option>
               </select>
 
+              <label className="sr-only" htmlFor="enq-message">Project details</label>
               <textarea
+                id="enq-message"
                 rows={4}
                 placeholder="Tell us about your project..."
                 value={formData.message}

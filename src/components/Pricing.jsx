@@ -12,7 +12,7 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" className="relative scroll-mt-20 bg-stone-50 py-24 md:py-32">
+    <section id="pricing" className="relative scroll-mt-20 bg-stone-50 py-24 md:py-32" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,7 +24,7 @@ const Pricing = () => {
           <div className="text-xs font-semibold uppercase tracking-[0.3em] text-stone-400">
             03 / Pricing
           </div>
-          <h2 className="mt-4 text-3xl font-black text-stone-900 md:text-5xl">
+          <h2 id="pricing-heading" className="mt-4 text-3xl font-black text-stone-900 md:text-5xl">
             Simple Pricing
           </h2>
           <p className="mt-4 text-stone-500">
@@ -34,7 +34,7 @@ const Pricing = () => {
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2">
           {PRICING_PLANS.map((plan, index) => (
-            <motion.div
+            <motion.article
               key={plan.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,9 +52,9 @@ const Pricing = () => {
               )}
 
               <div className="p-8">
-                <div className="text-sm font-semibold uppercase tracking-wider text-brand-600">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-600">
                   {plan.name}
-                </div>
+                </h3>
 
                 <div className="mt-4 flex items-end gap-3">
                   <span className="text-4xl font-black text-stone-900">
@@ -85,6 +85,7 @@ const Pricing = () => {
                       ? "bg-brand-500 text-white hover:bg-brand-600"
                       : "border border-stone-300 bg-white text-stone-700 hover:bg-stone-50"
                   }`}
+                  aria-label={`Get started with ${plan.name} plan at Rs.${plan.price}`}
                 >
                   Get Started
                 </button>
@@ -106,7 +107,7 @@ const Pricing = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 

@@ -10,7 +10,7 @@ const Footer = ({ onOpenLegal }) => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-zinc-950 text-white">
+    <footer className="relative overflow-hidden bg-zinc-950 text-white" role="contentinfo">
       <div className="absolute inset-0">
         <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-brand-500/5 blur-3xl" />
         <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-brand-500/5 blur-3xl" />
@@ -36,7 +36,7 @@ const Footer = ({ onOpenLegal }) => {
               </div>
             </div>
 
-            <div>
+            <nav aria-label="Footer navigation">
               <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-zinc-500">Navigation</h3>
               <div className="space-y-3">
                 {["services", "work", "pricing", "about"].map((item) => (
@@ -49,7 +49,7 @@ const Footer = ({ onOpenLegal }) => {
                   </button>
                 ))}
               </div>
-            </div>
+            </nav>
 
             <div>
               <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-zinc-500">Services</h3>

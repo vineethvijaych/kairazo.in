@@ -63,6 +63,9 @@ const ConsultationModal = ({ isOpen, onClose }) => {
       transition={{ duration: 0.35 }}
       className="fixed inset-0 z-[999] flex items-center justify-center bg-black/30 p-4"
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Book a free strategy call"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.92, y: 40 }}
@@ -73,7 +76,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-stone-200 bg-white px-6 py-5">
           <div>
-            <h2 className="text-xl font-bold text-stone-900">Book a Free Strategy Call</h2>
+            <h2 className="text-xl font-bold text-stone-900">Book Your Free Strategy Call</h2>
             <p className="mt-1 text-sm text-stone-500">Let's discuss your goals</p>
           </div>
           <button
@@ -87,7 +90,9 @@ const ConsultationModal = ({ isOpen, onClose }) => {
         <div className="p-6">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
+              <label className="sr-only" htmlFor="consult-name">Full Name</label>
               <input
+                id="consult-name"
                 type="text"
                 placeholder="Full Name *"
                 value={formData.name}
@@ -96,7 +101,9 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
               />
 
+              <label className="sr-only" htmlFor="consult-email">Email Address</label>
               <input
+                id="consult-email"
                 type="email"
                 placeholder="Email Address"
                 value={formData.email}
@@ -104,7 +111,9 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
               />
 
+              <label className="sr-only" htmlFor="consult-mobile">Mobile Number</label>
               <input
+                id="consult-mobile"
                 type="tel"
                 placeholder="Mobile Number * (WhatsApp preferred)"
                 value={formData.mobile}
@@ -113,7 +122,9 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 className="w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
               />
 
+              <label className="sr-only" htmlFor="consult-message">Message</label>
               <textarea
+                id="consult-message"
                 rows={3}
                 placeholder="Tell us about your business & goals..."
                 value={formData.message}
@@ -131,7 +142,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 type="submit"
                 className="w-full rounded-xl bg-brand-500 py-3.5 font-semibold text-white shadow-sm transition hover:bg-brand-600"
               >
-                Book Free Strategy Call
+                Book Your Free Strategy Call
               </button>
 
               <p className="text-center text-xs text-stone-400">

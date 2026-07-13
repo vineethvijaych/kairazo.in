@@ -86,6 +86,9 @@ const LegalModal = ({ isOpen, onClose, type }) => {
       transition={{ duration: 0.3 }}
       className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 p-4"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      role="dialog"
+      aria-modal="true"
+      aria-label={content.title}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}

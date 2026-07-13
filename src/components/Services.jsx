@@ -16,7 +16,7 @@ const cardVariants = {
 
 const Services = ({ onOpenConsultation }) => {
   return (
-    <section id="services" className="relative bg-zinc-950 py-24 md:py-32">
+    <section id="services" className="relative bg-zinc-950 py-24 md:py-32" aria-labelledby="services-heading">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -28,7 +28,7 @@ const Services = ({ onOpenConsultation }) => {
           <div className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500">
             02 / Services
           </div>
-          <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">
+          <h2 id="services-heading" className="mt-4 text-3xl font-black text-white md:text-5xl">
             What We Build
           </h2>
           <p className="mt-4 max-w-xl text-zinc-400">
@@ -42,6 +42,7 @@ const Services = ({ onOpenConsultation }) => {
           whileInView="show"
           viewport={{ once: true }}
           className="mt-16 grid gap-px bg-zinc-800 sm:grid-cols-2 lg:grid-cols-4"
+          role="list"
         >
           {SERVICES.map((service, index) => (
             <motion.div
@@ -49,6 +50,7 @@ const Services = ({ onOpenConsultation }) => {
               variants={cardVariants}
               whileHover={{ y: -6 }}
               className="bg-zinc-950 p-8 transition-colors hover:bg-zinc-900 md:p-10"
+              role="listitem"
             >
               <div className="text-5xl font-black text-zinc-800">
                 {String(index + 1).padStart(2, "0")}
@@ -73,8 +75,9 @@ const Services = ({ onOpenConsultation }) => {
           <button
             onClick={onOpenConsultation}
             className="rounded-xl border border-zinc-700 bg-zinc-800 px-8 py-4 text-base font-semibold text-white transition hover:bg-zinc-700"
+            aria-label="Book a free consultation call"
           >
-            Book a Free Call
+            Book a Free Strategy Call
           </button>
         </motion.div>
       </div>

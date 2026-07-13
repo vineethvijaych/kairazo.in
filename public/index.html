@@ -2,42 +2,208 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Kairoza — premium websites, web applications & digital growth systems for businesses."
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Kairoza — Digital Growth Studio</title>
+    <title>Kairoza — Website Development Company in Kerala | Web Design & Digital Marketing</title>
+    <meta name="description" content="Kairoza is a premium website development company in Kerala, India. We build custom websites, web applications, e-commerce stores and provide SEO & digital marketing services for businesses." />
+    <link rel="canonical" href="https://kairoza.in/" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMDkwOTBiIi8+CiAgPHRleHQgeD0iNTAiIHk9IjY4IiBmb250LWZhbWlseT0iSW50ZXIsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNkOTc3MDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPks8L3RleHQ+Cjwvc3ZnPg==" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMDkwOTBiIi8+CiAgPHRleHQgeD0iNTAiIHk9IjY4IiBmb250LWZhbWlseT0iSW50ZXIsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNkOTc3MDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPks8L3RleHQ+Cjwvc3ZnPg==" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMDkwOTBiIi8+CiAgPHRleHQgeD0iNTAiIHk9IjY4IiBmb250LWZhbWlseT0iSW50ZXIsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNkOTc3MDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPks8L3RleHQ+Cjwvc3ZnPg==" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#09090b" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kairoza.in/" />
+    <meta property="og:title" content="Kairoza — Website Development Company in Kerala | Web Design & Digital Marketing" />
+    <meta property="og:description" content="Kairoza is a premium website development company in Kerala, India. We build custom websites, web applications, e-commerce stores and provide SEO & digital marketing services." />
+    <meta property="og:image" content="https://kairoza.in/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kairoza — Digital Growth Studio" />
+    <meta property="og:site_name" content="Kairoza" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kairoza — Website Development Company in Kerala | Web Design & Digital Marketing" />
+    <meta name="twitter:description" content="Kairoza is a premium website development company in Kerala, India. We build custom websites, web applications, e-commerce stores and provide SEO & digital marketing services." />
+    <meta name="twitter:image" content="https://kairoza.in/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Kairoza — Digital Growth Studio" />
+
+    <!-- Performance: Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://kairoza.in/#organization",
+        "name": "Kairoza",
+        "url": "https://kairoza.in/",
+        "description": "Premium website development company in Kerala, India. Specializing in custom web development, web applications, SEO, and digital marketing.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://kairoza.in/og-image.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9526673206",
+          "contactType": "sales",
+          "email": "hello.kairoza@gmail.com",
+          "availableLanguage": ["English", "Malayalam", "Hindi"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kasaragod",
+          "addressRegion": "Kerala",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://wa.me/919526673206"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://kairoza.in/#website",
+        "url": "https://kairoza.in/",
+        "name": "Kairoza",
+        "description": "Premium website development company in Kerala, India. We build custom websites, web applications, e-commerce stores and provide SEO & digital marketing services.",
+        "publisher": {
+          "@id": "https://kairoza.in/#organization"
+        }
+      }
+    </script>
+
+    <!-- JSON-LD: LocalBusiness / ProfessionalService -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["ProfessionalService", "LocalBusiness"],
+        "@id": "https://kairoza.in/#business",
+        "name": "Kairoza",
+        "image": "https://kairoza.in/og-image.jpg",
+        "url": "https://kairoza.in/",
+        "telephone": "+91-9526673206",
+        "email": "hello.kairoza@gmail.com",
+        "priceRange": "₹9,999 – ₹1,00,000+",
+        "description": "Website development company in Kerala specializing in custom website design, web application development, e-commerce solutions, SEO, and digital marketing for businesses.",
+        "areaServed": [
+          {"@type": "City", "name": "Kasaragod"},
+          {"@type": "State", "name": "Kerala"},
+          {"@type": "Country", "name": "India"}
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kasaragod",
+          "addressRegion": "Kerala",
+          "addressCountry": "IN"
+        },
+        "openingHoursSpecification": [
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "09:00", "closes": "18:00"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:00", "closes": "18:00"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "09:00", "closes": "18:00"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:00", "closes": "18:00"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "18:00"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00"}
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://kairoza.in/#faq",
+        "mainEntity": [
+          {"@type": "Question", "name": "Do you build more than just websites?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Besides websites, we also build custom web applications, admin panels, CMS platforms, dashboards, booking systems, ERP software, inventory systems, and business automation solutions tailored to your requirements."}},
+          {"@type": "Question", "name": "How long does it take to build a website?", "acceptedAnswer": {"@type": "Answer", "text": "Most websites are delivered within 1-2 weeks for Starter and 2-4 weeks for Business. Custom web applications have timelines discussed based on project scope."}},
+          {"@type": "Question", "name": "Do you offer SEO services?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we provide search optimization and local presence strategies to drive organic growth including keyword research, on-page SEO, and technical SEO."}},
+          {"@type": "Question", "name": "What is the cost of a website in Kerala?", "acceptedAnswer": {"@type": "Answer", "text": "Our Starter website package is Rs.9,999 and our Business package is Rs.19,999. Custom web applications start from Rs.34,999. We offer affordable, transparent pricing with no hidden costs."}}
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: WebPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://kairoza.in/",
+        "url": "https://kairoza.in/",
+        "name": "Kairoza — Website Development Company in Kerala",
+        "description": "Premium website development company in Kerala, India. Custom websites, web applications, SEO & digital marketing for businesses.",
+        "isPartOf": {"@id": "https://kairoza.in/#website"},
+        "about": {"@id": "https://kairoza.in/#organization"},
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://kairoza.in/og-image.jpg"
+        }
+      }
+    </script>
+
+    <!-- JSON-LD: Service / OfferCatalog -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Service", "OfferCatalog"],
+        "@id": "https://kairoza.in/#services",
+        "name": "Kairoza Services",
+        "description": "Website development, web applications, SEO, and digital marketing services.",
+        "provider": {"@id": "https://kairoza.in/#organization"},
+        "itemListElement": [
+          {"@type": "Service", "name": "Website Development", "description": "Business websites, landing pages and e-commerce stores built for performance."},
+          {"@type": "Service", "name": "Web Applications", "description": "Custom dashboards, ERP systems and SaaS platforms engineered to scale."},
+          {"@type": "Service", "name": "SEO & Visibility", "description": "Search optimisation and local presence strategies to drive organic growth."},
+          {"@type": "Service", "name": "Digital Marketing", "description": "Paid campaigns, content creation and funnel management across platforms."}
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://kairoza.in/#breadcrumb",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://kairoza.in/"}
+        ]
+      }
+    </script>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

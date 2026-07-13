@@ -9,7 +9,7 @@ const Navbar = ({ onOpenEstimator }) => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -26,13 +26,29 @@ const Navbar = ({ onOpenEstimator }) => {
     setIsMobileMenuOpen(false);
   };
 
+  const handleKeyDown = (e, href) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleLinkClick(e, href);
+    }
+  };
+
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
-    >
+    <header>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-lg focus:bg-brand-500 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:outline-none"
+      >
+        Skip to main content
+      </a>
+      <motion.nav
+        initial={{ y: -80 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
+        role="navigation"
+        aria-label="Main navigation"
+      >
       <div className="mx-auto max-w-7xl">
         <motion.div
           animate={{ scale: isScrolled ? 0.98 : 1 }}
@@ -59,13 +75,15 @@ const Navbar = ({ onOpenEstimator }) => {
               </span>
             </motion.div>
 
-            <div className="hidden items-center gap-1 md:flex">
+            <div className="hidden items-center gap-1 md:flex" role="menubar">
               {navLinks.map((link) => (
                 <motion.a
                   key={link.name}
                   href={link.href}
+                  role="menuitem"
                   whileHover={{ y: -1 }}
                   onClick={(e) => handleLinkClick(e, link.href)}
+                  onKeyDown={(e) => handleKeyDown(e, link.href)}
                   className="rounded-lg px-4 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-white"
                 >
                   {link.name}
@@ -85,6 +103,8 @@ const Navbar = ({ onOpenEstimator }) => {
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 md:hidden"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               <motion.span
                 animate={{ rotate: isMobileMenuOpen ? 45 : 0, y: isMobileMenuOpen ? 0 : -6 }}
@@ -114,14 +134,16 @@ const Navbar = ({ onOpenEstimator }) => {
               transition={{ duration: 0.3 }}
               className="mt-2 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 md:hidden"
             >
-              <div className="p-4 space-y-1">
-                {navLinks.map((link) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="block rounded-lg px-4 py-3 text-sm font-medium text-zinc-400 transition hover:bg-zinc-900 hover:text-white"
-                  >
+                <div className="p-4 space-y-1" role="menu">
+                  {navLinks.map((link) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      role="menuitem"
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      onKeyDown={(e) => handleKeyDown(e, link.href)}
+                      className="block rounded-lg px-4 py-3 text-sm font-medium text-zinc-400 transition hover:bg-zinc-900 hover:text-white"
+                    >
                     {link.name}
                   </motion.a>
                 ))}
@@ -137,6 +159,7 @@ const Navbar = ({ onOpenEstimator }) => {
         </AnimatePresence>
       </div>
     </motion.nav>
+    </header>
   );
 };
 
