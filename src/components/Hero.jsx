@@ -7,8 +7,8 @@ const Hero = ({ onOpenEstimator }) => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-zinc-950 pt-40 pb-32 md:pt-48 md:pb-40">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative overflow-hidden bg-zinc-950 pt-40 pb-32 md:min-h-[calc(100vh-4rem)] md:flex md:items-center md:pt-16 md:pb-0">
+      <div className="mx-auto w-full max-w-7xl px-6">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -60,6 +60,26 @@ const Hero = ({ onOpenEstimator }) => {
           </motion.div>
         </div>
       </div>
+
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        onClick={scrollToWork}
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 cursor-pointer md:block"
+        aria-label="Scroll to content"
+      >
+        <motion.svg
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="h-5 w-5 text-zinc-600"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </motion.svg>
+      </motion.button>
     </section>
   );
 };
