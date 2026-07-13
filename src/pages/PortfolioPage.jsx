@@ -11,14 +11,6 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay },
 });
 
-const stagger = {
-  initial: {},
-  whileInView: {
-    transition: { staggerChildren: 0.08 },
-  },
-  viewport: { once: true },
-};
-
 const PortfolioPage = () => {
   const { slug } = useParams();
   const page = PORTFOLIO_PAGES.find((p) => p.slug === slug);
@@ -41,13 +33,6 @@ const PortfolioPage = () => {
 
   const SectionTitle = ({ children }) => (
     <h2 className="text-2xl font-bold text-white md:text-3xl">{children}</h2>
-  );
-
-  const StatCard = ({ label, value }) => (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 text-center">
-      <div className="text-2xl font-black text-brand-500">{value}</div>
-      <div className="mt-1 text-xs text-zinc-500">{label}</div>
-    </div>
   );
 
   return (
